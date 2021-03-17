@@ -22,12 +22,22 @@ const Login = () => {
       }).then(response => response.json())
         .then(result => {
           console.log(result);
+          localStorage.setItem('myToken', result.token);
         })
         .catch(console.error);
 
 
         event.preventDefault()
     }
+
+
+    const signOut = () => {
+        localStorage.removeItem('myToken')
+        console.log('signedout')
+      }
+
+
+
     return (
         <div className="home">
             Login
@@ -45,6 +55,7 @@ const Login = () => {
     <Button variant="primary" type="submit" onClick={authenticate}>
     Submit
   </Button>
+    <Button variant="danger" onClick={signOut}>Sign Out</Button>
 </Form>
         </div>
     )
