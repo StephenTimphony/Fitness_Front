@@ -23,6 +23,7 @@ const Login = () => {
         .then(result => {
           console.log(result);
           localStorage.setItem('myToken', result.token);
+          localStorage.setItem("username", username)
           if (username && password) {
           alert("You are signed in!")
           }
