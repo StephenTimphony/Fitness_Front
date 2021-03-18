@@ -23,6 +23,10 @@ const Login = () => {
         .then(result => {
           console.log(result);
           localStorage.setItem('myToken', result.token);
+          if (username && password) {
+          alert("You are signed in!")
+          }
+          
         })
         .catch(console.error);
 
@@ -32,14 +36,15 @@ const Login = () => {
 
 
     const signOut = () => {
-        localStorage.removeItem('myToken')
-        console.log('signedout')
+        if (localStorage.getItem('myToken')) {
+            localStorage.removeItem('myToken')
+            alert("You are signed out!")
+        }
       }
 
 
-
     return (
-        <div className="home">
+        <div className="login">
             Login
             <Form>
   <Form.Group controlId="Username">
@@ -57,6 +62,9 @@ const Login = () => {
   </Button>
     <Button variant="danger" onClick={signOut}>Sign Out</Button>
 </Form>
+
+
+        
         </div>
     )
 
