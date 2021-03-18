@@ -18,3 +18,20 @@ export async function registerUser(userName, userPassword) {
       throw error;
     }
   }
+
+  export async function getUserPublicRoutines() {
+    
+         
+    try {
+      const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/albert/routines', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      const routines = await response.json();
+      return routines;
+
+    } catch (error) {
+      
+    }
+  }
