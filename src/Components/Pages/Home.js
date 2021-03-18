@@ -1,9 +1,19 @@
 import React from 'react';
+import {
+    NavBar,
+    Login,
+    Register,
+    LoginModal,
+    Title
+} from '../index'
 
 const Home = () => {
     return (
         <div className="home">
-              Home 1     
+            <Title />
+              <NavBar />
+              <LoginModal />
+        
         </div>
     )
 

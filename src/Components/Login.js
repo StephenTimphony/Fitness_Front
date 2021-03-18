@@ -7,7 +7,6 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-
     function authenticate(event) {
         
     fetch('http://fitnesstrac-kr.herokuapp.com/api/users/login', {
@@ -23,6 +22,8 @@ const Login = () => {
         .then(result => {
           console.log(result);
           localStorage.setItem('myToken', result.token);
+          localStorage.setItem('username',username)
+          console.log(localStorage.getItem('username'))
           if (username && password) {
           alert("You are signed in!")
           }
@@ -33,16 +34,6 @@ const Login = () => {
 
         event.preventDefault()
     }
-
-
-    const signOut = () => {
-        if (localStorage.getItem('myToken')) {
-            localStorage.removeItem('myToken')
-            alert("You are signed out!")
-        }
-      }
-
-
     return (
         <div className="login">
             Login
@@ -60,7 +51,7 @@ const Login = () => {
     <Button variant="primary" type="submit" onClick={authenticate}>
     Submit
   </Button>
-    <Button variant="danger" onClick={signOut}>Sign Out</Button>
+    
 </Form>
 
 

@@ -1,13 +1,11 @@
 import { React, useState } from 'react';
-import NavBar from '../NavBar';
-import { registerUser } from '../../api/index';
+import { registerUser } from '../api/index';
 
 const Register = ({userName, setUserName, userPassword, setUserPassword}) => {
     const [confirmPassword, setConfirmPassword] = useState('');
 
     return (
-        <div>           
-            <NavBar/>      
+        <div>              
             <div className="register">
                 <form id="registerForm"
                         onSubmit={async (event) => {
