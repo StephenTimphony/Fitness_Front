@@ -5,12 +5,16 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import {Activities, Home, Login, MyRoutines, Routines} from './Components/Pages';
+import { Activities, Home, Login, MyRoutines, Register, Routines} from './Components/Pages';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react'
 
 
 
 
 function App() {
+  const [ userName, setUserName ] = useState('');
+  const [ userPassword, setUserPassword ] = useState('');
   
   return (
     <Router>
@@ -27,6 +31,13 @@ function App() {
         </Route>
         <Route path="/Routines">
           <Routines />
+        </Route>
+        <Route path="/register">
+          <Register
+           userName={ userName } 
+           setUserName={ setUserName } 
+           userPassword={ userPassword } 
+           setUserPassword={ setUserPassword } />
         </Route>
         <Route path="/">
           <Home />
