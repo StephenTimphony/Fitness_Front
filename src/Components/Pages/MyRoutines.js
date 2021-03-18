@@ -20,7 +20,7 @@ const MyRoutines = () => {
         <div>
             <NavBar/> 
         <div className="myRoutines">
-            {
+            {   myRoutines.length > 0 ?
                 myRoutines.map((routine, idx) => {
                     console.log(routine)
                     const { activities, creatorId, creatorName, goal, name } = routine
@@ -33,7 +33,11 @@ const MyRoutines = () => {
                         name={ name}
                         />
                     )
-                })
+                }) : (
+                    <div>
+                        <h1>You have no routines.</h1>
+                    </div> 
+                )
             }
         </div>
         </div>
