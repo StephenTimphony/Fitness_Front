@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-
+import {React, useState } from 'react';
+import {CreateActivity} from '../index'
+import 'bootstrap/dist/css/bootstrap.min.css';
+const myToken = localStorage.getItem('myToken')
 
 
 const Activities = () => {
@@ -15,10 +17,16 @@ const Activities = () => {
             setActivities(result)
         })
         .catch(console.error);
+
+
+
+   
         
 
     return (
         <div className="home">
+                
+           {myToken?<CreateActivity /> : ''}
          {
              activities.map((activity, index) => 
                 <div key = {index}>
