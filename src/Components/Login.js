@@ -22,7 +22,7 @@ const Login = () => {
         .then(result => {
           console.log(result);
           localStorage.setItem('myToken', result.token);
-          localStorage.setItem('username',username)
+          localStorage.setItem('username',username);
           console.log(localStorage.getItem('username'))
           window.location.reload();
         })
