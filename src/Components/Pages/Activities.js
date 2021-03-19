@@ -1,7 +1,8 @@
 import {React, useState } from 'react';
 import {
     CreateActivity,
-    NavBar
+    NavBar,
+    Title
 } from '../index'
 import 'bootstrap/dist/css/bootstrap.min.css';
 const myToken = localStorage.getItem('myToken')
@@ -16,7 +17,6 @@ const Activities = () => {
         })
         .then(response => response.json())
         .then(result => {
-            console.log(result);
             setActivities(result)
         })
         .catch(console.error);
@@ -28,6 +28,7 @@ const Activities = () => {
 
     return (
         <div className="home">
+            <Title />
             <NavBar />
                 
            {myToken?<CreateActivity /> : ''}

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { getPublicRoutines } from '../../api/index';
 import RoutineCard from '../RoutineCard';
 import NavBar from '../NavBar';
+import {Title} from '../index'
 
 
 
@@ -20,6 +21,7 @@ const Routines = () => {
 
     return (
         <div>
+            <Title />
             <NavBar/> 
         <div className="publicRoutines">
             {   publicRoutines.length > 0 ?

@@ -5,6 +5,7 @@ import NavBar from '../NavBar';
 
 
 
+
 const MyRoutines = () => {
     const [ myRoutines, setMyRoutines ] = useState([]);
     
@@ -18,6 +19,7 @@ const MyRoutines = () => {
 
     return (
         <div>
+            
             <NavBar/> 
         <div className="myRoutines">
             {   myRoutines.length > 0 ?
