@@ -24,11 +24,7 @@ const Login = () => {
           localStorage.setItem('myToken', result.token);
           localStorage.setItem('username',username)
           console.log(localStorage.getItem('username'))
-          if (username && password) {
-          alert("You are signed in!")
           window.location.reload();
-          }
-          
         })
         .catch(console.error);
 
