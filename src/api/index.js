@@ -1,3 +1,21 @@
+
+
+export async function checkUser() {
+  try {
+    const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${ localStorage.getItem("myToken") }`
+      },
+    })
+    const user = await response.json();
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
 export async function registerUser(userName, userPassword) {
 
   try{ 
@@ -47,6 +65,36 @@ export async function getPublicRoutines() {
     })
     const routines = await response.json();
     return routines;
+
+  } catch (error) {
+    
+  }
+}
+
+export async function createRoutine({ name, goal, isPublic, id }) {
+  console.log(name, goal, isPublic, id )
+  let token;
+  if (!localStorage.getItem("myToken")) {
+    return;
+  } else {
+    token = localStorage.getItem("myToken");
+  }
+  try {
+    const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/routines', {
+      method: "POST",
+      headers: {
+        'Content-type':'application/json',
+        'Authorization':`Bearer ${ token }`
+      },
+      body: JSON.stringify({
+        creatorId: `${ id }`,
+        name: `${ name }`,
+        goal: `${ goal }`,
+        isPublic: `${ isPublic }`
+      })
+    })  
+    const routine = await response.json();
+    return routine;
 
   } catch (error) {
     

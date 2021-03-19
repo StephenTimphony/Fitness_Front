@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { getUserPublicRoutines } from '../../api/index';
 import RoutineCard from '../RoutineCard';
 import NavBar from '../NavBar';
+import CreateRoutineModal from '../CreateRoutineModal';
 
 
 
@@ -18,11 +19,11 @@ const MyRoutines = () => {
     }, [])
 
     return (
-        <div>
-            
+        <div>            
             <NavBar/> 
+            {localStorage.getItem("myToken") ?<CreateRoutineModal /> : ''}
         <div className="myRoutines">
-            {   myRoutines.length > 0 ?
+            {   myRoutines ?
                 myRoutines.map((routine, idx) => {
                     console.log(routine)
                     const { activities, creatorId, creatorName, goal, name } = routine
