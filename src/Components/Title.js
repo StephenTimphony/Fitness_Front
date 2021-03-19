@@ -10,6 +10,7 @@ const Title = () => {
         if (localStorage.getItem('myToken')) {
             localStorage.removeItem('myToken')
             alert("You are signed out!")
+            window.location.reload();
         } else {
             alert("You are not signed in")
         }

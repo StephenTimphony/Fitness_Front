@@ -1,6 +1,6 @@
 import {React, useState } from 'react';
 import {
-    CreateActivity,
+    CreateActivityModal,
     NavBar,
     Title
 } from '../index'
@@ -31,7 +31,7 @@ const Activities = () => {
             <Title />
             <NavBar />
                 
-           {myToken?<CreateActivity /> : ''}
+           {myToken?<CreateActivityModal /> : ''}
          {
              activities.map((activity, index) => 
                 <div key = {index}>

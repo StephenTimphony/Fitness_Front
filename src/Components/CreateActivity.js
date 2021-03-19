@@ -1,5 +1,5 @@
 import {React, useState } from 'react';
-import {Form} from 'react-bootstrap';
+import {Form, Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 const myToken = localStorage.getItem('myToken')
 
@@ -28,6 +28,7 @@ const CreateActivity = () => {
         
         setName('')
         setDescription('')
+        window.location.reload();
         
     }
   
@@ -59,10 +60,7 @@ const CreateActivity = () => {
 
                      </Form.Control>
                 </Form.Group>
-                <button type="submit" 
-                        className="submit-button">
-                        submit
-                </button>
+                <Button variant="success" onClick={handleSubmit}>Submit</Button>{' '}
                 </Form>
         </div>
     )

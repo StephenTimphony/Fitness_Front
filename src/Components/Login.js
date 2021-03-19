@@ -26,6 +26,7 @@ const Login = () => {
           console.log(localStorage.getItem('username'))
           if (username && password) {
           alert("You are signed in!")
+          window.location.reload();
           }
           
         })
