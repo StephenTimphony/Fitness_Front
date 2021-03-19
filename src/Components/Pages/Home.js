@@ -1,7 +1,6 @@
 import React from 'react';
 import {
     NavBar,
-    Login,
     Register,
     LoginModal,
     Title
