@@ -26,9 +26,10 @@ const MyRoutines = () => {
             {   myRoutines ?
                 myRoutines.map((routine, idx) => {
                     console.log(routine)
-                    const { activities, creatorId, creatorName, goal, name } = routine
+                    const { activities, creatorId, creatorName, goal, name, id } = routine
                     return (
-                        <RoutineCard key={ idx } 
+                        <RoutineCard key={ idx }
+                        routineId={ id } 
                         activities={ activities }
                         creatorId={ creatorId }
                         creatorName={ creatorName }
