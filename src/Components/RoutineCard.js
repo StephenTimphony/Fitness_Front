@@ -4,13 +4,14 @@ import {
     checkUser,
     deleteRoutine
 } from '../api';
-import EditRoutineModal from './EditRoutineModal'
-
+import EditRoutineModal from './EditRoutineModal';
+import EditActivityModal from './EditActivityModal';
+import AttachActivityModal from './AttachActivityModal'
 
 
 const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId }) => {
     const [ id, setId ] = useState('');
-    console.log(creatorId)
+    console.log(routineId)
     async function getUserId() {
         const user = await checkUser();
         setId(user.id)
@@ -21,12 +22,15 @@ const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId
         return (
             <div className="routineCard">
                 <button onClick={ () => {deleteRoutine(routineId); }}>Delete</button>
-                <EditRoutineModal routineId={ routineId }/>
+                <EditRoutineModal routineId={ routineId }/>  
+                <EditActivityModal /> 
+                <AttachActivityModal routineId={ routineId } />             
                 <h1>{ name }</h1>
                 
                 {   activities.length > 0 ?
                 <div>
                     <h3>Activities: </h3>
+                    
                     {
                         activities.map((activity, idx) => {
                             console.log(activity)
@@ -35,15 +39,16 @@ const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId
                                     <b><u>{ activity.name }</u></b>
                                     <li>{ activity.description }</li>
                                     {
-                                        activity.duration ?
-                                         <li>Duration: { activity.duration }</li>
-                                         : null
-                                    }                             
-                                    {
                                         activity.count ?
                                          <li>Count: { activity.count }</li>
                                          : null
                                     }
+                                    {
+                                        activity.duration ?
+                                         <li>Duration: { activity.duration }</li>
+                                         : null
+                                    }                             
+                                    
                                 </div>
                             )
                         }) 

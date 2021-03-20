@@ -4,34 +4,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const myToken = localStorage.getItem('myToken')
 
 
-const CreateActivity = () => {
+const EditActivity = ({ routineActivityId,count, duration }) => {
     const [name, setName] = useState([]);
     const [description, setDescription] = useState([]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/activities', {
-            method: 'POST',
-            headers: {
-                'Content-type':'application/json',
-                'Authorization':`Bearer ${myToken}`
-            },
+        const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/api/routine_activities/${ routineActivityId }`, {
+            method: "PATCH",
             body: JSON.stringify({
-                name: name,
-                description: description
-                
+              count: count,
+              duration: duration
             })
-        })
-
-        const data = await response.json();
-        console.log('data',data);
-        
-        
-        setName('')
-        setDescription('')
-        window.location.reload();
-        
-    }
+          })
+          const data = await response.json();
+          console.log(data);
+          return data;
+        }
   
 
     
@@ -68,4 +57,4 @@ const CreateActivity = () => {
     
 
 }
-export default CreateActivity;
+export default EditActivity;

@@ -12,6 +12,7 @@ const Home = () => {
             <Title />
               <NavBar />
               <LoginModal />
+              <Register />
         <div>
            { myToken? <h2>Welcome {localStorage.getItem('username')}!</h2>:''}
         </div>
