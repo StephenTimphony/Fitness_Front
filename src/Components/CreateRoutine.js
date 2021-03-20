@@ -17,7 +17,7 @@ const CreateRoutine = () => {
         const user = await checkUser();
         setId(user.id)
     }
-    getUserId();
+    getUserId()
     
     return (
     
