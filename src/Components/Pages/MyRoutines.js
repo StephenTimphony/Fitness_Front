@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import { getUserPublicRoutines } from '../../api/index';
 import RoutineCard from '../RoutineCard';
 import NavBar from '../NavBar';
+import Title from '../Title'
 import CreateRoutineModal from '../CreateRoutineModal';
-
+const myToken = localStorage.getItem('myToken')
 
 
 
@@ -19,9 +20,10 @@ const MyRoutines = () => {
     }, [])
 
     return (
-        <div>            
+        <div>  
+            <Title />          
             <NavBar/> 
-            {localStorage.getItem("myToken") ?<CreateRoutineModal /> : ''}
+            {myToken ?<CreateRoutineModal /> : ''}
         <div className="myRoutines">
             {   myRoutines ?
                 myRoutines.map((routine, idx) => {

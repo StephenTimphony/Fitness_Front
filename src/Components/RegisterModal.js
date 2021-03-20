@@ -1,6 +1,6 @@
 import {Modal, Button} from 'react-bootstrap';
 import {React, useState} from 'react';
-import {Register, Login} from './index';
+import  Register  from './Register';
 
 function MyVerticallyCenteredModal(props) {
     return (
@@ -12,11 +12,11 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+            Fill out the form to Register
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Login />
+        <Register />
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
@@ -25,13 +25,13 @@ function MyVerticallyCenteredModal(props) {
     );
   }
   
-  const  LoginModal = () => {
+  const  RegisterModal = () => {
     const [modalShow, setModalShow] = useState(false);
   
     return (
       <>
-        <Button variant="outline-success" onClick={() => setModalShow(true)}>
-          Login
+        <Button variant="outline-danger" onClick={() => setModalShow(true)}>
+          Register
         </Button>
   
         <MyVerticallyCenteredModal
@@ -41,5 +41,4 @@ function MyVerticallyCenteredModal(props) {
       </>
     );
   }
-  
- export default LoginModal;
+  export default RegisterModal;
