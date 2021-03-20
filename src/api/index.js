@@ -51,7 +51,7 @@ export async function registerUser(userName, userPassword) {
     return routines;
 
   } catch (error) {
-    
+    throw error;
   }
 }
 
@@ -67,7 +67,7 @@ export async function getPublicRoutines() {
     return routines;
 
   } catch (error) {
-    
+    throw error;
   }
 }
 
@@ -97,7 +97,7 @@ export async function createRoutine({ name, goal, isPublic, id }) {
     return routine;
 
   } catch (error) {
-    
+    throw error;
   }
 }
 
@@ -113,7 +113,7 @@ export async function deleteRoutine(id) {
     const routine = await response.json();
     return routine;
   } catch (error) {
-    
+    throw error;
   }
 }
 
@@ -135,6 +135,44 @@ export async function updateRoutine({ name, goal, isPublic, routineId}) {
     const routine = await response.json();
     return routine;
   } catch (error) {
-    
+    throw error;
+  }
+}
+
+export async function getAllActivities() {
+
+  try {
+    const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/activities', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    const activities = await response.json();
+    return activities;
+
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function addActivityToRoutine({ routineid, activityId, count, duration }) {
+ 
+  console.log(routineid, activityId, count, duration)
+  try {
+    const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${ routineid.routineid }/activities`, {
+      method: "POST",
+      headers: {
+        'Content-type':'application/json'
+      },
+      body: JSON.stringify({
+        "activityId": activityId,
+        count: parseInt(count, 10),
+        duration: parseInt(duration, 10)
+      })
+    })
+    const activity = await response.json();
+    return activity;
+  } catch (error) {
+    throw error;
   }
 }
