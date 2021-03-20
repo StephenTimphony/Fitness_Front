@@ -8,6 +8,8 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     
+
+    
     function authenticate(event) {
         
         fetch('http://fitnesstrac-kr.herokuapp.com/api/users/register', {
@@ -50,7 +52,7 @@ const Register = () => {
         <Form.Control type="username" placeholder="Password" onChange={(event)=>setConfirmPassword(event.target.value)} />
       </Form.Group>
         <Button variant="primary" type="submit"
-        onClick={authenticate}> 
+        onClick={() => {password !== confirmPassword? alert('Passwords do not match') : authenticate()}}> 
         Submit
       </Button>
         
