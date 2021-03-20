@@ -87,15 +87,53 @@ export async function createRoutine({ name, goal, isPublic, id }) {
         'Authorization':`Bearer ${ token }`
       },
       body: JSON.stringify({
-        creatorId: `${ id }`,
-        name: `${ name }`,
-        goal: `${ goal }`,
-        isPublic: `${ isPublic }`
+        creatorId: id,
+        name: name,
+        goal:  goal,
+        isPublic: isPublic
       })
     })  
     const routine = await response.json();
     return routine;
 
+  } catch (error) {
+    
+  }
+}
+
+export async function deleteRoutine(id) {
+  try {
+    const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${ id }`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${ localStorage.getItem("myToken")}`
+      }
+    })
+    const routine = await response.json();
+    return routine;
+  } catch (error) {
+    
+  }
+}
+
+export async function updateRoutine({ name, goal, isPublic, routineId}) {
+  console.log(name, goal, isPublic, routineId)
+  try {
+    const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${ routineId }`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${ localStorage.getItem("myToken")}`
+      },
+      body: JSON.stringify({
+        isPublic: isPublic,
+        name: name,
+        goal: goal
+      })
+    })
+    const routine = await response.json();
+    return routine;
   } catch (error) {
     
   }
