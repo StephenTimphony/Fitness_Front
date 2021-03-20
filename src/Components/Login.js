@@ -24,6 +24,7 @@ const Login = () => {
           localStorage.setItem('myToken', result.token);
           localStorage.setItem('username',username);
           console.log(localStorage.getItem('username'))
+          
           window.location.reload();
         })
         .catch(console.error);

@@ -29,7 +29,7 @@ const CreateActivity = () => {
         
         setName('')
         setDescription('')
-        window.location.reload();
+       
         
     }
   

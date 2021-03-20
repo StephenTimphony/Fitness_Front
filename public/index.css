@@ -85,3 +85,7 @@ myRoutines {
   display: flex;
   flex-direction: column;
 }
+.mr-auto {
+  display: flex;
+  justify-content: space-around;
+}
