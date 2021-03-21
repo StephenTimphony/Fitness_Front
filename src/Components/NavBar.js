@@ -15,10 +15,7 @@ const NavBar = () => {
        { myToken? <Nav.Link href="/myroutines">My Routines</Nav.Link> :'' }
         <Nav.Link href="activities">Activities</Nav.Link>
         </Nav>
-        <Form inline>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        <Button variant="outline-primary">Search</Button>
-        </Form>
+      
        </Navbar>  
     ) 
 }
