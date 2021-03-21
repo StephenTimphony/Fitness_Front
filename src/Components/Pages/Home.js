@@ -14,7 +14,7 @@ const Home = () => {
               <NavBar />
 
               <LoginModal />
-              <Register />
+              {/* <Register /> */}
               {myToken?'': <LoginModal /> }
 
         <div>

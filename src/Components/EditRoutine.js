@@ -3,26 +3,21 @@ import {Form, Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { 
     updateRoutine,
-    checkUser
+    deleteRoutine
 } from '../api/index';
 
 
-const EditRoutine = ({ routineId }) => {
+const EditRoutine = ({ routineId, finished, setFinished }) => {
     
     const [ name, setName ] = useState('');
     const [ goal, setGoal ] = useState('');
     const [ isPublic, setIsPublic ] = useState(false);
-    const [ id, setId ] = useState('');
-    async function getUserId() {
-        const user = await checkUser();
-        setId(user.id)
-    }
-    getUserId()
-    
+      
     return (
     
         <div>              
-             <Form onSubmit={ () => { updateRoutine({ name, goal, isPublic, routineId })} }>
+             <Form onSubmit={ () => { updateRoutine({ name, goal, isPublic, routineId }); setFinished(finished + 1)} }>
+             <Button onClick={ () => { deleteRoutine(routineId) }}>Delete</Button>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Name</Form.Label>
                     <Form.Control 
@@ -46,7 +41,7 @@ const EditRoutine = ({ routineId }) => {
                 <Form.Group id="publicCheckboxMyRoutine">
                     <Form.Check type="checkbox" label="Do you want the routine to be public?" onChange={ () => {!isPublic ? setIsPublic(true) : setIsPublic(false) }} />
                 </Form.Group>
-                <Button variant="success" onClick={ () => { updateRoutine({ name, goal, isPublic, routineId })} }>Submit</Button>{' '}
+                <Button variant="success" onClick={ () => { updateRoutine({ name, goal, isPublic, routineId }); setFinished(finished + 1)} }>Submit</Button>{' '}
                 </Form>
         </div>
     )

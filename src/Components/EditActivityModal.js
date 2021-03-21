@@ -16,7 +16,7 @@ function MyVerticallyCenteredModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <EditActivity routine_activity_id={ props.routine_activity_id }/>
+        <EditActivity routine_activity_id={ props.routine_activity_id } finished={ props.finished } setFinished={ props.setFinished }/>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={ props.onHide }>Close</Button>
@@ -25,7 +25,7 @@ function MyVerticallyCenteredModal(props) {
     );
   }
   
-  const  EditActivityModal = ({ routine_activity_id }) => {
+  const  EditActivityModal = ({ routine_activity_id, finished, setFinished }) => {
     const [modalShow, setModalShow] = useState(false);
   
     return (
@@ -38,6 +38,8 @@ function MyVerticallyCenteredModal(props) {
           show={modalShow}
           onHide={() => setModalShow(false)}
           routine_activity_id={ routine_activity_id }
+          finished={ finished } 
+          setFinished={ setFinished }
         />
       </>
     );
