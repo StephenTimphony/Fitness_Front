@@ -2,10 +2,13 @@ import {Modal, Button} from 'react-bootstrap';
 import {React, useState} from 'react';
 import CreateRoutine from './CreateRoutine';
 
-function MyVerticallyCenteredModal(props) {
+function MyVerticallyCenteredModal({  show, onHide, finished, setFinished }) {
     return (
       <Modal
-        {...props}
+        show={ show }
+        onHide={ onHide }
+        finished={ finished } 
+        setFinished={ setFinished }
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -16,16 +19,16 @@ function MyVerticallyCenteredModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <CreateRoutine />
+        <CreateRoutine finished={ finished } setFinished={ setFinished }/>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button onClick={onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     );
   }
   
-  const  CreateRoutineModal = () => {
+  const  CreateRoutineModal = ({ finished, setFinished }) => {
     const [modalShow, setModalShow] = useState(false);
   
     return (
@@ -35,8 +38,10 @@ function MyVerticallyCenteredModal(props) {
         </Button>
   
         <MyVerticallyCenteredModal
-          show={modalShow}
+          show={ modalShow }
           onHide={() => setModalShow(false)}
+          finished={ finished } 
+          setFinished={ setFinished }
         />
       </>
     );

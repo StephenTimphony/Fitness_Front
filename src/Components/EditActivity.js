@@ -7,7 +7,7 @@ import {
 } from "../api";
 
 
-const EditActivity = ({ routine_activity_id }) => {
+const EditActivity = ({ routine_activity_id, finished, setFinished }) => {
     const [ count, setCount ] = useState('');
     const [ duration, setDuration ] = useState('');
 
@@ -18,7 +18,7 @@ const EditActivity = ({ routine_activity_id }) => {
     return (
         <div>
                     
-             <Form onSubmit={() => { editActivity({ routine_activity_id, count, duration })  }}>
+             <Form onSubmit={() => { editActivity({ routine_activity_id, count, duration }); setFinished(finished + 1) }}>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Count</Form.Label>
                     <Form.Control 
@@ -40,8 +40,8 @@ const EditActivity = ({ routine_activity_id }) => {
 
                      </Form.Control>
                 </Form.Group>
-                <Button onClick={() => { deleteActivityFromRoutine({ routine_activity_id }) } }>DELETE</Button>
-                <Button variant="success" onClick={() => { editActivity({ routine_activity_id, count, duration })  }}>Submit</Button>{' '}
+                <Button onClick={() => { deleteActivityFromRoutine({ routine_activity_id }); setFinished(finished + 1) } }>DELETE</Button>
+                <Button variant="success" onClick={() => { editActivity({ routine_activity_id, count, duration }); setFinished(finished + 1)  }}>Submit</Button>{' '}
                 </Form>
         </div>
     )
