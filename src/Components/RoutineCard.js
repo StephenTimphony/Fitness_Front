@@ -7,6 +7,7 @@ import {
 import EditRoutineModal from './EditRoutineModal';
 import EditActivityModal from './EditActivityModal';
 import AttachActivityModal from './AttachActivityModal'
+import { Button } from 'react-bootstrap'
 
 
 const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId }) => {
@@ -21,9 +22,8 @@ const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId
     if (id === creatorId){
         return (
             <div className="routineCard">
-                <button onClick={ () => {deleteRoutine(routineId); }}>Delete</button>
-                <EditRoutineModal routineId={ routineId }/>  
-                <EditActivityModal /> 
+                <Button onClick={ () => {deleteRoutine(routineId); }}>Delete</Button>
+                <EditRoutineModal routineId={ routineId }/> 
                 <AttachActivityModal routineId={ routineId } />             
                 <h1>{ name }</h1>
                 
@@ -48,7 +48,7 @@ const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId
                                          <li>Duration: { activity.duration }</li>
                                          : null
                                     }                             
-                                    
+                                    <EditActivityModal routine_activity_id={ activity.routineActivityId }/> 
                                 </div>
                             )
                         }) 

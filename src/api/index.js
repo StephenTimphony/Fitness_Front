@@ -166,13 +166,51 @@ export async function addActivityToRoutine({ routineid, activityId, count, durat
       },
       body: JSON.stringify({
         "activityId": activityId,
-        count: parseInt(count, 10),
-        duration: parseInt(duration, 10)
+        count: count,
+        duration: duration
       })
     })
     const activity = await response.json();
     return activity;
   } catch (error) {
     throw error;
+  }
+}
+
+export async function editActivity({ routine_activity_id, count, duration }) {
+
+  try {
+    const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routine_activities/${ routine_activity_id }`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${ localStorage.getItem('myToken') }`
+      },
+      body: JSON.stringify({
+        count: count,
+        duration: duration
+      })
+    })
+    const activity = await response.json();
+    return activity;
+  } catch (error) {
+    
+  }
+}
+
+export async function deleteActivityFromRoutine({ routine_activity_id }) {
+
+  try {
+    const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routine_activities/${ routine_activity_id }`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${ localStorage.getItem('myToken') }`
+      }
+    })
+    const activity = await response.json();
+    return activity;
+  } catch (error) {
+    
   }
 }
