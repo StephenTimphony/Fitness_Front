@@ -1,26 +1,16 @@
 import {React, useState } from 'react';
 import {Form, Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-const myToken = localStorage.getItem('myToken')
+import { 
+    editActivity,
+    deleteActivityFromRoutine
+} from "../api";
 
 
-const EditActivity = ({ routineActivityId,count, duration }) => {
-    const [name, setName] = useState([]);
-    const [description, setDescription] = useState([]);
+const EditActivity = ({ routine_activity_id }) => {
+    const [ count, setCount ] = useState('');
+    const [ duration, setDuration ] = useState('');
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/api/routine_activities/${ routineActivityId }`, {
-            method: "PATCH",
-            body: JSON.stringify({
-              count: count,
-              duration: duration
-            })
-          })
-          const data = await response.json();
-          console.log(data);
-          return data;
-        }
   
 
     
@@ -28,29 +18,30 @@ const EditActivity = ({ routineActivityId,count, duration }) => {
     return (
         <div>
                     
-             <Form onSubmit={handleSubmit}>
+             <Form onSubmit={() => { editActivity({ routine_activity_id, count, duration })  }}>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>Count</Form.Label>
                     <Form.Control 
                          as="textarea"
                          rows={1} 
-                        placeholder="name" 
-                        value={name} 
-                        onChange={(event) => setName(event.target.value)}> 
+                        placeholder="Count" 
+                        value={count} 
+                        onChange={(event) => setCount(event.target.value)}> 
                         </Form.Control>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Description</Form.Label>
+                    <Form.Label>Duration</Form.Label>
                     <Form.Control
                      as="textarea"
                      rows={2}
-                     placeholder="Description" 
-                     value={description} 
-                     onChange={(event) => setDescription(event.target.value)}>
+                     placeholder="Duration" 
+                     value={duration} 
+                     onChange={(event) => setDuration(event.target.value)}>
 
                      </Form.Control>
                 </Form.Group>
-                <Button variant="success" onClick={handleSubmit}>Submit</Button>{' '}
+                <Button onClick={() => { deleteActivityFromRoutine({ routine_activity_id }) } }>DELETE</Button>
+                <Button variant="success" onClick={() => { editActivity({ routine_activity_id, count, duration })  }}>Submit</Button>{' '}
                 </Form>
         </div>
     )
