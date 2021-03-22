@@ -12,9 +12,7 @@ const Home = () => {
         <div className="home">
             <Title />
               <NavBar />
-
-              <LoginModal />
-              {/* <Register /> */}
+              
               {myToken?'': <LoginModal /> }
 
         <div>

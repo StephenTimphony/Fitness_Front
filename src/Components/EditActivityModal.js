@@ -30,7 +30,7 @@ function MyVerticallyCenteredModal(props) {
   
     return (
       <>
-        <Button variant="success" onClick={() => setModalShow(true)}>
+        <Button variant="warning" onClick={() => setModalShow(true)}>
           Edit Activity!
         </Button>
   

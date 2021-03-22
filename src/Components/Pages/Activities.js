@@ -34,7 +34,8 @@ const Activities = () => {
            {myToken?<CreateActivityModal /> : ''}
          {
              activities.map((activity, index) => 
-                <div key = {index}>
+                <div className ="activity-page"
+                    key = {index}>
                     <h3>{activity.name}</h3>
                     <p>{activity.description}</p>
                     </div>

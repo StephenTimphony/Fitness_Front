@@ -54,12 +54,3 @@ const MyRoutines = () => {
 }
 
 export default MyRoutines;
-
-// id: 957
-// activities: []
-// creatorId: 1
-// creatorName: "albert"
-// goal: "Let's do this!"
-// id: 957
-// isPublic: true
-// name: "Hello Routine"

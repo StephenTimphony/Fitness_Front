@@ -33,7 +33,7 @@ function MyVerticallyCenteredModal({  show, onHide, finished, setFinished }) {
   
     return (
       <>
-        <Button variant="success" onClick={() => setModalShow(true)}>
+        <Button variant="info" onClick={() => setModalShow(true)}>
           Create Routine!
         </Button>
   
