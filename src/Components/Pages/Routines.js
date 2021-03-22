@@ -26,7 +26,6 @@ const Routines = () => {
         <div className="publicRoutines">
             {   publicRoutines.length > 0 ?
                 publicRoutines.map((routine, idx) => {
-                    console.log(routine)
                     const { activities, creatorId, creatorName, goal, name } = routine
                     return (
                         <RoutineCard key={ idx } 

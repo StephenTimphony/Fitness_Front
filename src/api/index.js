@@ -1,20 +1,23 @@
 
 
 export async function checkUser() {
-
-  try {
-    const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${ localStorage.getItem("myToken") }`
-      },
-    })
-    const user = await response.json();
-    return user;
-  } catch (error) {
-    throw error;
+  if(localStorage.getItem("myToken")) {
+    try {
+      const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/me', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${ localStorage.getItem("myToken") }`
+        },
+      })
+      const user = await response.json();
+      return user;
+    } catch (error) {
+      throw error;
+    }
   }
 }
+
+ 
 
 
 export async function registerUser(userName, userPassword) {
