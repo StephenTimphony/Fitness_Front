@@ -66,7 +66,7 @@ const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId
                 <h3>Activities: </h3>
                 {
                     activities.map((activity, idx) => {
-                        console.log(activity)
+                        
                         return (
                             <div key={ idx } className="activityDescription">
                                 <b><u>{ activity.name }</u></b>
