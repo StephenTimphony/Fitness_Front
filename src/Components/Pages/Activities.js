@@ -10,7 +10,7 @@ const myToken = localStorage.getItem('myToken')
 
 const Activities = () => {
     const [activities, setActivities] = useState([])
-    fetch('http://fitnesstrac-kr.herokuapp.com/api/activities', {
+    fetch('https://fitnesstrac-kr.herokuapp.com/api/activities', {
         headers: {
             'Content-Type': 'application/json',
         },
