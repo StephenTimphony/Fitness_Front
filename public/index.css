@@ -58,8 +58,13 @@ body {
   border-radius: 5px;
 }
 
-myRoutines {
+.myRoutines {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 2px 2px;
+
+
 }
 
 .routineCard {
@@ -89,3 +94,22 @@ myRoutines {
   display: flex;
   justify-content: space-around;
 }
+.activity-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . . ."
+    ". . . ."
+    ". . . .";
+    border: 1px solid black;
+}
+.publicRoutines {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px 10px;
+  height: 100px;
+}
+

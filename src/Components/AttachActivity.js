@@ -7,8 +7,7 @@ import {
 } from '../api';
 
 
-const AttachActivity = ( routineid ) => {
-    console.log(routineid)
+const AttachActivity = ({ routineid, finished, setFinished }) => {
     const [ activityId, setActivityId ] = useState('');
     const [ count, setCount ] = useState([]);
     const [ duration, setDuration ] = useState([]);
@@ -59,7 +58,7 @@ const AttachActivity = ( routineid ) => {
 
                      </Form.Control>
                 </Form.Group>
-                <Button variant="success" onClick={() => { addActivityToRoutine({ activityId, routineid, count, duration }) }}>Submit</Button>{' '}
+                <Button variant="success" onClick={() => { addActivityToRoutine({ activityId, routineid, count, duration }); setFinished(finished + 1) }}>Submit</Button>{' '}
                 </Form>
         </div>
     )

@@ -10,24 +10,25 @@ const myToken = localStorage.getItem('myToken')
 
 const MyRoutines = () => {
     const [ myRoutines, setMyRoutines ] = useState([]);
+    const [ finished, setFinished ] = useState(0);
+    
     
     useEffect (() => {
         async function fetchData() {
-            const response = await getUserPublicRoutines()
-            setMyRoutines(response);
+            const routines = await getUserPublicRoutines()
+            setMyRoutines(routines);
         }
         fetchData();
-    }, [])
+    }, [finished])
 
     return (
         <div>  
             <Title />          
             <NavBar/> 
-            {myToken ?<CreateRoutineModal /> : ''}
+            {myToken ?<CreateRoutineModal finished={ finished } setFinished={ setFinished }/> : ''}
         <div className="myRoutines">
             {   myRoutines ?
                 myRoutines.map((routine, idx) => {
-                    console.log(routine)
                     const { activities, creatorId, creatorName, goal, name, id } = routine
                     return (
                         <RoutineCard key={ idx }
@@ -37,6 +38,8 @@ const MyRoutines = () => {
                         creatorName={ creatorName }
                         goal={ goal }
                         name={ name}
+                        finished={ finished }
+                        setFinished={ setFinished }
                         />
                     )
                 }) : (
@@ -51,12 +54,3 @@ const MyRoutines = () => {
 }
 
 export default MyRoutines;
-
-// id: 957
-// activities: []
-// creatorId: 1
-// creatorName: "albert"
-// goal: "Let's do this!"
-// id: 957
-// isPublic: true
-// name: "Hello Routine"

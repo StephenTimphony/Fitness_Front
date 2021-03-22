@@ -1,6 +1,6 @@
 import {Modal, Button} from 'react-bootstrap';
 import {React, useState} from 'react';
-import {Register, Login} from './index';
+import {Login} from './index';
 
 function MyVerticallyCenteredModal(props) {
     return (

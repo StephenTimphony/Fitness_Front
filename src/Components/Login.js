@@ -29,7 +29,6 @@ const Login = () => {
         })
         .catch(console.error);
 
-
         event.preventDefault()
     }
     return (

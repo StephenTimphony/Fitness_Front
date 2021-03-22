@@ -7,7 +7,7 @@ import {
 } from '../api/index';
 
 
-const CreateRoutine = () => {
+const CreateRoutine = ({ finished, setFinished }) => {
     
     const [ name, setName ] = useState('');
     const [ goal, setGoal ] = useState('');
@@ -22,7 +22,7 @@ const CreateRoutine = () => {
     return (
     
         <div>              
-             <Form onSubmit={ () => { createRoutine({ name, goal, isPublic, id })} }>
+             <Form onSubmit={ () => { createRoutine({ name, goal, isPublic, id }); setFinished(finished + 1); } }>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Name</Form.Label>
                     <Form.Control 
@@ -46,7 +46,7 @@ const CreateRoutine = () => {
                 <Form.Group id="publicCheckbox">
                     <Form.Check type="checkbox" label="Do you want the routine to be public?" onChange={ () => {!isPublic ? setIsPublic(true) : setIsPublic(false) }} />
                 </Form.Group>
-                <Button variant="success" onClick={ () => { createRoutine({ name, goal, isPublic, id })} }>Submit</Button>{' '}
+                <Button variant="success" onClick={ () => { createRoutine({ name, goal, isPublic, id }); setFinished(finished + 1)} }>Submit</Button>{' '}
                 </Form>
         </div>
     )

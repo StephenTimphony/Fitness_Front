@@ -1,18 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
-import { 
-    checkUser,
-    deleteRoutine
-} from '../api';
+import { checkUser } from '../api';
 import EditRoutineModal from './EditRoutineModal';
 import EditActivityModal from './EditActivityModal';
 import AttachActivityModal from './AttachActivityModal'
-import { Button } from 'react-bootstrap'
 
 
-const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId }) => {
+const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId, setFinished, finished }) => {
     const [ id, setId ] = useState('');
-    console.log(routineId)
     async function getUserId() {
         const user = await checkUser();
         setId(user.id)
@@ -21,10 +16,9 @@ const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId
 
     if (id === creatorId){
         return (
-            <div className="routineCard">
-                <Button onClick={ () => {deleteRoutine(routineId); }}>Delete</Button>
-                <EditRoutineModal routineId={ routineId }/> 
-                <AttachActivityModal routineId={ routineId } />             
+            <div className="routineCard">                
+                <EditRoutineModal routineId={ routineId } finished={ finished } setFinished={ setFinished }/> 
+                <AttachActivityModal routineId={ routineId } finished={ finished } setFinished={ setFinished }/>             
                 <h1>{ name }</h1>
                 
                 {   activities.length > 0 ?
@@ -33,7 +27,6 @@ const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId
                     
                     {
                         activities.map((activity, idx) => {
-                            console.log(activity)
                             return (
                                 <div key={ idx } className="activityDescription">
                                     <b><u>{ activity.name }</u></b>
@@ -48,7 +41,7 @@ const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId
                                          <li>Duration: { activity.duration }</li>
                                          : null
                                     }                             
-                                    <EditActivityModal routine_activity_id={ activity.routineActivityId }/> 
+                                    <EditActivityModal routine_activity_id={ activity.routineActivityId } finished={ finished } setFinished={ setFinished }/> 
                                 </div>
                             )
                         }) 
