@@ -8,11 +8,14 @@ import AttachActivityModal from './AttachActivityModal'
 
 const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId, setFinished, finished }) => {
     const [ id, setId ] = useState('');
-    async function getUserId() {
-        const user = await checkUser();
-        setId(user.id)
+    if(localStorage.getItem("myToken")) {
+        async function getUserId() {
+            const user = await checkUser();
+            setId(user.id)
+        }
+        getUserId()
     }
-    getUserId()
+    
 
     if (id === creatorId){
         return (
@@ -66,7 +69,7 @@ const RoutineCard = ({ activities, creatorId, creatorName, goal, name, routineId
                 <h3>Activities: </h3>
                 {
                     activities.map((activity, idx) => {
-                        
+
                         return (
                             <div key={ idx } className="activityDescription">
                                 <b><u>{ activity.name }</u></b>
